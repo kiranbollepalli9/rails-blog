@@ -1,0 +1,9 @@
+{
+    "emmet.includeLanguages": {
+        "html.erb": "html", 
+        "erb": "html",
+        "ruby": "html"
+
+    },
+    "emmet.showSuggestionsAsSnippets": true
+}
