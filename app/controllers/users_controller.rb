@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+    def index
+        @users = User.all
+    end
+
     def new
         @user = User.new
     end
@@ -27,7 +31,7 @@ class UsersController < ApplicationController
          @user = User.find(params[:id])
         if @user.update(form_params)
             flash[:notice] = " #{@user.username} was updated sucessfully! "
-            redirect_to posts_path
+            redirect_to @user
         else 
             render 'edit'
         end        
