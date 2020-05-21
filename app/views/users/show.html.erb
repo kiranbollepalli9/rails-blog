@@ -1,7 +1,9 @@
     <h1 class="mt-4 text-center"> <%= @user.username %>'s profile</h1>
-    <div class="mt-4 text-center">
-        <%= link_to "Update Profile", edit_user_path(@user), class: "btn btn-outline-info"%>
-    </div>    
+    <% if logged_in? && @user == current_user %>
+        <div class="mt-4 text-center">
+            <%= link_to "Update Profile", edit_user_path(@user), class: "btn btn-outline-info"%>
+        </div>
+    <% end %>    
     <% if @posts.any? %>
         <h3 class="mt-4 text-center"> <%= @user.username %>'s Posts</h3>
         <%= render 'posts/post', list: @posts%>
