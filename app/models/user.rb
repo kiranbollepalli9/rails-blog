@@ -12,6 +12,8 @@ class User < ApplicationRecord
     validates :email, presence: true,
                         uniqueness: { case_sensitive: false },
                         length: {in: 6..50},
-                        format: {with: EMAIL_VALIDATION_REGEX }                    
+                        format: {with: EMAIL_VALIDATION_REGEX }   
+                        
+    has_secure_password
     
 end

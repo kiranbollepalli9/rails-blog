@@ -1,0 +1,7 @@
+    <h1 class="mt-4 text-center"> <%= @user.username %>'s profile</h1>
+    <% if @posts.any? %>
+        <h3 class="mt-4 text-center"> <%= @user.username %>'s Posts</h3>
+        <%= render 'posts/post', list: @posts%>
+    <% else %>
+        <h3 class="mt-4 text-center"> No posts Found</h3>
+    <% end %>
