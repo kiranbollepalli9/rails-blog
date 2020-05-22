@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
     
-    before_action :set_post, only: [:edit, :show, :update, :destroy ]
+    before_action :set_post, only: [:edit, :show, :update, :destroy]
+
+    before_action :require_user, except: [:show, :index]
+
+    before_action :require_same_user, only: [:edit, :update, :destroy]
 
     def index
         @posts = Post.paginate(page: params[:page], per_page: 3)
@@ -50,5 +54,13 @@ class PostsController < ApplicationController
         
         def set_post
             @post = Post.find(params[:id])
+        end
+
+        def require_same_user
+            if current_user != @post.user
+                flash[:alert] = "You can only edit or delete your own article"
+                redirect_to @post
+            end
+
         end
 end
