@@ -14,6 +14,6 @@ class User < ApplicationRecord
                         length: {in: 6..50},
                         format: {with: EMAIL_VALIDATION_REGEX }   
                         
-    has_secure_password
-    
+    has_secure_password    
 end
+
